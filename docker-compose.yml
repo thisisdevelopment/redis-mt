@@ -1,0 +1,25 @@
+version: '3.1'
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  app:
+    hostname: redis-mt.docker
+    image: eqalpha/keydb
+#    user: ${USER_ID:-1000}:${GROUP_ID:-1000}
+    volumes:
+      - ./data:/data
+      - ./src:/src
+      - ./config:/etc/keydb
+
+  client1:
+    hostname: client1.redis-mt.docker
+    image: eqalpha/keydb
+    entrypoint:  "tail -f /dev/null"
+
+  client2:
+    hostname: client2.redis-mt.docker
+    image: eqalpha/keydb
+    entrypoint:  "tail -f /dev/null"

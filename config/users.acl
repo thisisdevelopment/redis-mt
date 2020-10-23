@@ -1,0 +1,2 @@
+user admin on allkeys +@all >admin
+user default off
